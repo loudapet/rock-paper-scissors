@@ -12,18 +12,63 @@ function	getComputerChoice()
 		choice = "scissors";
 	return (choice);
 }
-//console.log(getComputerChoice());
 
 function	getPlayerChoice()
 {
 	let	choice;
 
-	choice = prompt("Make your choice").toLowerCase();
+	choice = prompt("Make your choice");
+	if (choice)
+		choice.toLowerCase();
 	return (choice);
 }
-//console.log(getPlayerChoice());
+
+function	printWinLose(result, playerSelection, computerSelection)
+{
+	if (result === 0)
+		console.log(`It's a draw, you both chose ${playerSelection}.`);
+	else if (result === 1)
+		console.log(`You won, ${playerSelection} beats ${computerSelection}.`);
+	else if (result === -1)
+		console.log(`You lose, ${computerSelection} beats ${playerSelection}.`);
+	else
+		console.log(`"${result}" is not a valid input.`);
+}
 
 function	playRound(playerSelection, computerSelection)
 {
+	let	result;
 
+	console.log(playerSelection);
+	console.log(computerSelection);
+
+	if (playerSelection === computerSelection)
+		result = 0;
+	else if (playerSelection === "rock")
+	{
+		if (computerSelection === "paper")
+			result = -1;
+		else if (computerSelection === "scissors")
+			result = 1;
+	}
+	else if (playerSelection === "paper")
+	{
+		if (computerSelection === "scissors")
+			result = -1;
+		else if (computerSelection === "rock")
+			result = 1;
+	}
+	else if (playerSelection === "scissors")
+	{
+		if (computerSelection === "rock")
+			result = -1;
+		else if (computerSelection === "paper")
+			result = 1;
+	}
+	else
+		result = null;
+	printWinLose(result, playerSelection, computerSelection);
+	return (result);
 }
+
+playRound(getPlayerChoice(), getComputerChoice());
