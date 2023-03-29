@@ -75,8 +75,10 @@ function	getWinner(playerWins, computerWins)
 {
 	if (playerWins < computerWins)
 		console.log(`You lost with a score of ${playerWins} to ${computerWins}.`);
-	else
+	else if (playerWins > computerWins)
 		console.log(`You won with a score of ${playerWins} to ${computerWins}.`);
+	else
+		console.log(`It's a draw with a score of ${playerWins} for both players.`);
 }
 
 function	game()
@@ -91,6 +93,8 @@ function	game()
 	i = 1;
 	while (i <= 5 || (player < 5 && computer < 5))
 	{
+		if (i > 15)
+			break ;
 		result = playRound(getPlayerChoice(), getComputerChoice());
 		if (result === 1)
 			player++;
