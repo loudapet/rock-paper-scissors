@@ -12,4 +12,13 @@ function	getComputerChoice()
 		choice = "Scissors";
 	return (choice);
 }
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
+
+function	getPlayerChoice()
+{
+	let	choice;
+
+	choice = prompt("Make your choice");
+	return (choice);
+}
+//console.log(getPlayerChoice());
