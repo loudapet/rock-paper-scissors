@@ -39,8 +39,8 @@ function	playRound(playerSelection, computerSelection)
 {
 	let	result;
 
-	console.log(playerSelection);
-	console.log(computerSelection);
+	//console.log(playerSelection);
+	//console.log(computerSelection);
 
 	if (playerSelection === computerSelection)
 		result = 0;
@@ -71,4 +71,34 @@ function	playRound(playerSelection, computerSelection)
 	return (result);
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+function	getWinner(playerWins, computerWins)
+{
+	if (playerWins < computerWins)
+		console.log(`You lost with a score of ${playerWins} to ${computerWins}.`);
+	else
+		console.log(`You won with a score of ${playerWins} to ${computerWins}.`);
+}
+
+function	game()
+{
+	let	player;
+	let	computer;
+	let	result;
+	let	i;
+
+	player = 0;
+	computer = 0;
+	i = 1;
+	while (i <= 5 || (player < 5 && computer < 5))
+	{
+		result = playRound(getPlayerChoice(), getComputerChoice());
+		if (result === 1)
+			player++;
+		else if (result === -1)
+			computer++;
+		i++;
+	}
+	getWinner(player, computer);
+}
+
+game();
